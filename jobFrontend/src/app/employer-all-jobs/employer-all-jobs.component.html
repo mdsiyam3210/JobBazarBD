@@ -1,0 +1,103 @@
+<!-- <div class="parent" id="parent"> -->
+  <h1 class="titleText">Employer Dashboard</h1>
+  <div class="content">
+    @if (user$) {
+      <h2 style="color:white; text-align:center;">All Job Postings </h2>
+    }
+  </div>
+  <div class="card" id="card">
+    @for (job of jobs; track $index) {
+      <mat-card>
+        <h5 style="text-align: center;"> {{ job["title"] }} </h5>
+        <mat-card-content>
+          <p style="text-align: center;">
+            <b>COMPANY</b> <br>
+            <mat-icon>domain</mat-icon>
+            {{ job["company"] }}
+          </p>
+          <p style="text-align: center;">
+            <b>DESCRIPTION</b> <br>
+            <mat-icon>description</mat-icon>
+            {{ job["description"] }}
+          </p>
+          <p style="text-align: center;">
+            <b>SALARY</b> <br>
+            <mat-icon>attach_money</mat-icon>
+            <b>{{ job["salary"] }}</b> BDT
+          </p>
+          <!-- <p style="text-align: center;">
+            <b>LOCATION</b> <br>
+            <mat-icon>location_on</mat-icon>
+            {{ job["location"] }}
+          </p>
+          <p style="text-align: center;">
+            <b>TYPE</b> <br>
+            <mat-icon>info</mat-icon>
+            @if (job["type"] == "FULL_TIME") {
+              FULL TIME
+            }
+            @else if (job["type"] == "PART_TIME") {
+              PART TIME
+            }
+            @else if (job["type"] == "CONTRACT") {
+              CONTRACT
+            }
+            @else if (job["type"] == "INTERNSHIP") {
+              INTERNSHIP
+            }
+          </p> -->
+        </mat-card-content>
+          <div class="cardButtons">
+            <mat-card-actions>
+              <!-- <button mat-flat-button (click)="apply()">Apply</button>
+              <button mat-flat-button (click)="getDetails()">Details</button> -->
+              <!-- <button mat-button [matMenuTriggerFor]="menu" #menuTrigger>More</button> -->
+              <!-- <mat-menu #menu="matMenu"> -->
+                <!-- <form action="/employee" method="post" target="hiddenFrame"> -->
+                <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"> -->
+              <!-- </mat-menu> -->
+            </mat-card-actions>
+          </div>
+      </mat-card>
+    }
+  </div>
+
+  <!-- <div id="paidPlans" style="display: none;">
+    <mat-grid-list cols="4">
+      <mat-grid-tile *ngFor="let plan of plans" [colspan]="1" [rowspan]="1">
+        <mat-card [ngClass]="{'highlight-card': plan.highlight}">
+          <mat-card-header>
+            <mat-card-title>{{ plan.name }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="pricing">
+              <h2>{{ plan.price | currency:currency }}</h2>
+              <p>Per {{ isYearly ? 'Year' : 'Month' }}</p>
+            </div>
+            <mat-divider></mat-divider>
+            <ul class="features">
+              <li *ngFor="let feature of plan.features">{{ feature }}</li>
+            </ul>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="subscribe(plan)">
+              Subscribe
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <div class="toggle-container">
+      <span style="padding: 10px;">Monthly</span>
+      <mat-slide-toggle [(ngModel)]="isYearly" (change)="onPriceToggle()"></mat-slide-toggle>
+      <span style="padding: 10px;">Yearly</span>
+    </div>
+  </div> -->
+<!-- </mat-sidenav-content> -->
+<!-- </mat-sidenav-container> -->
+
+<!-- </div> -->
+
+
+<br> <br> <br> <br> <br> <br> <br>
+<app-footer></app-footer>

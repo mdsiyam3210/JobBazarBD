@@ -1,0 +1,107 @@
+@if (user$) {
+  <h1 style="text-align: center; color: black;">Employee Dashboard</h1>
+  <div class="content">
+      <h2 style="color:rgb(15, 82, 226); text-align:center;">{{ user$.name }}'s CV</h2>
+  </div>
+
+  <div class="cv-container">
+    <!-- <h5 *ngIf="!cvData">Create Your CV</h5>
+    <h5 *ngIf="cvData">Edit Your CV</h5> -->
+
+    <form [formGroup]="cvForm" (ngSubmit)="createCv()">
+      <mat-form-field appearance="fill" class="custom-mat-form-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" readonly="true" placeholder="{{ user$.name }}"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="custom-mat-form-field">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phone_number" type="number" readonly="true" placeholder="{{ user$.phone }}"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location" />
+        <mat-error *ngIf="cvForm.get('location')?.hasError('required')">
+          Location is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="custom-mat-form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" readonly="true" placeholder="{{ user$.email }}"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Skills</mat-label>
+        <input matInput formControlName="skills" />
+        <mat-error *ngIf="cvForm.get('skills')?.hasError('required')">
+          Skills are required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Years Of Experience</mat-label>
+        <input matInput formControlName="experience" type="number"/>
+        <mat-error *ngIf="cvForm.get('experience')?.hasError('required')">
+          Experience is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Institute</mat-label>
+        <input matInput formControlName="institute" />
+        <mat-error *ngIf="cvForm.get('institute')?.hasError('required')">
+          Institute is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Degree</mat-label>
+        <input matInput formControlName="degree" type="text"/>
+        <mat-error *ngIf="cvForm.get('degree')?.hasError('required')">
+          Degree is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Passing Year</mat-label>
+        <input matInput formControlName="passing_year" type="number"/>
+        <mat-error *ngIf="cvForm.get('passing_year')?.hasError('required')">
+          Passing year is required
+        </mat-error>
+        <mat-error *ngIf="cvForm.get('passing_year')?.hasError('pattern')">
+          Enter a valid 4-digit year
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CGPA</mat-label>
+        <input matInput formControlName="cgpa" />
+        <mat-error *ngIf="cvForm.get('cgpa')?.hasError('required')">
+          CGPA is required
+        </mat-error>
+        <mat-error *ngIf="cvForm.get('cgpa')?.hasError('min') || cvForm.get('cgpa')?.hasError('max')">
+          CGPA must be between 0 and 4
+        </mat-error>
+      </mat-form-field>
+
+    <div class="container2">
+      <div class="button-group">
+        <button mat-flat-button color="primary" type="submit" [disabled]="cvForm.invalid">
+          {{ cvData ? 'Update CV' : 'Create CV' }}
+        </button>
+
+        <button mat-flat-button (click)="fileInput.click();$event.preventDefault()" color="warn" class="postBtn">
+          Upload CV File
+        </button>
+
+        <a mat-flat-button href="http://localhost:8080/api/uploads/pdf/{{ user$.id }}" target="_blank"> View CV </a>
+      </div>
+    </div>
+      <input #fileInput type="file" style="display: none" (change)="uploadCV($event)" accept="application/*">
+    </form>
+  </div>
+  <br> <br> <br> <br> <br>
+  <app-employee-footer></app-employee-footer>
+}

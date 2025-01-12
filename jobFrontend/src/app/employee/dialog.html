@@ -1,0 +1,36 @@
+@if (jobData && employer) {
+<mat-dialog-content>
+  <p style="text-align: center;">
+    <b>LOCATION</b> <br>
+    <mat-icon>location_on</mat-icon>
+    {{ jobData["location"] }}
+  </p>
+  <p style="text-align: center;">
+    <b>TYPE</b> <br>
+    <mat-icon>info</mat-icon>
+    @if (jobData["type"] == "FULL_TIME") {
+      FULL TIME
+    }
+    @else if (jobData["type"] == "PART_TIME") {
+      PART TIME
+    }
+    @else if (jobData["type"] == "CONTRACT") {
+      CONTRACT
+    }
+    @else if (jobData["type"] == "INTERNSHIP") {
+      INTERNSHIP
+    }
+  </p>
+  <p style="text-align: center;">
+    <b>EMPLOYER INFO</b> <br>
+    <mat-icon>person</mat-icon> {{ employer["name"] }} <br>
+    <mat-icon>email</mat-icon> {{ employer["username"] }} <br>
+    <mat-icon>phone</mat-icon> {{ employer["phone_number"] }} <br>
+
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="(ngDoCheck())" id="btn">Get Info</button>
+  <button mat-button mat-dialog-close>Exit</button>
+</mat-dialog-actions>
+}

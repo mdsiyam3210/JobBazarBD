@@ -1,0 +1,82 @@
+<h1 class="titleText">Employee Dashboard</h1>
+<div class="content">
+    <h2 style="color:rgb(15, 82, 226); text-align:center;">Applied Jobs</h2>
+</div>
+
+<div class="card" id="card">
+  @for (job of jobData; track $index) {
+    <mat-card>
+      <h5 style="text-align: center;"> {{ job["job_title"] }} </h5>
+      <mat-card-content>
+        <p style="text-align: center;">
+          <b>COMPANY</b> <br>
+          <mat-icon>domain</mat-icon>
+          {{ job["company"] }}
+        </p>
+        <p style="text-align: center;">
+          <b>LOCATION</b> <br>
+          <mat-icon>location_on</mat-icon>
+          {{ job["location"] }}
+        </p>
+        <p style="text-align: center;">
+          <b>SALARY</b> <br>
+          <mat-icon>attach_money</mat-icon>
+          {{ job["salary"] }} BDT
+        </p>
+        @if (job["status"] == "PENDING") {
+          <p style="text-align: center;">
+            <b>STATUS</b> <br>
+            <mat-icon>access_time</mat-icon>
+            <b style="color: orange;">{{ job["status"] }}</b>
+          </p>
+        }
+        @else if (job["status"] == "ACCEPTED") {
+          <p style="text-align: center;">
+            <b>STATUS</b> <br>
+            <mat-icon>access_time</mat-icon>
+            <b style="color: green;">{{ job["status"] }}</b>
+          </p>
+        }
+        @else if (job["status"] == "REJECTED") {
+          <p style="text-align: center;">
+            <b>STATUS</b> <br>
+            <mat-icon>access_time</mat-icon>
+            <b style="color: red;">{{ job["status"] }}</b>
+          </p>
+        }
+      <!-- </div> -->
+        <mat-card-actions>
+          <button mat-flat-button color="warn" (click)="deleteApplication(job['id'])" class="deleteBtn">Delete</button>
+          <!-- <button mat-raised-button [matMenuTriggerFor]="menu" #menuTrigger>More</button> -->
+            <!-- <mat-menu #menu="matMenu"> -->
+          <button mat-flat-button (click)="getEmployerInfo(job['job_id'])">Contacts</button>
+            <!-- <input mat-menu-item type="submit" value="Applicant Information" (click)="getApplicantInfo(job['applicant_id'])"> -->
+            <!-- </mat-menu> -->
+        </mat-card-actions>
+        <!-- <p style="text-align: center;">
+          <b>LOCATION</b> <br>
+          <mat-icon>location_on</mat-icon>
+          {{ job["location"] }}
+        </p>
+        <p style="text-align: center;">
+          <b>TYPE</b> <br>
+          <mat-icon>info</mat-icon>
+          @if (job["type"] == "FULL_TIME") {
+            FULL TIME
+          }
+          @else if (job["type"] == "PART_TIME") {
+            PART TIME
+          }
+          @else if (job["type"] == "CONTRACT") {
+            CONTRACT
+          }
+          @else if (job["type"] == "INTERNSHIP") {
+            INTERNSHIP
+          }
+        </p> -->
+      </mat-card-content>
+    </mat-card>
+  }
+</div>
+<br> <br> <br> <br> <br>
+<app-employee-footer></app-employee-footer>

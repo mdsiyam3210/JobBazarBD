@@ -1,0 +1,29 @@
+<h1 style="text-align: center; color: black;">Employee Dashboard</h1>
+  <div class="content">
+      <h2 style="color:rgb(15, 82, 226); text-align:center;">Notifications</h2>
+  </div>
+<div id="notifTable">
+
+  <table *ngIf="tableData.length > 0" mat-table [dataSource]="tableData" class="mat-elevation-z8 notifTable">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element["id"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="message">
+      <th mat-header-cell *matHeaderCellDef> Message </th>
+      <td mat-cell *matCellDef="let element"> <b> {{element["message"]}} </b> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element"> <button mat-button (click)="goToApplications()"> View Applied Jobs </button> </td>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+<app-employee-footer></app-employee-footer>

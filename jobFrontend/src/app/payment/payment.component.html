@@ -1,0 +1,45 @@
+<h1 style="text-align: center; color: black;">Employee Dashboard</h1>
+<div class="content">
+    <h3 style="color:rgb(15, 82, 226); text-align:center;">Payment Receipt</h3>
+</div>
+
+<form [formGroup]="receiptForm" (ngSubmit)="printReceipt()" class="receipt-form">
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="costumer_name" placeholder="Name"/>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Phone Number</mat-label>
+    <input matInput formControlName="costumer_phone" type="number" placeholder="Phone Number"/>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field custom-mat-form-field">
+    <mat-label>Plan Name</mat-label>
+    <input matInput formControlName="plan_name" readonly="true"/>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field custom-mat-form-field">
+    <mat-label>Amount</mat-label>
+    <input matInput formControlName="amount_paid" readonly="true"/>
+  </mat-form-field>
+
+  <mat-label class="payment-method-label">Payment Method</mat-label>
+  <div *ngFor="let method of paymentMethods; let i = index" class="payment-methods">
+    <mat-checkbox [formControl]="paymentMethodControls[i]">
+      {{ method }}
+    </mat-checkbox>
+  </div>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Transaction ID</mat-label>
+    <input matInput formControlName="transaction_id">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Reference</mat-label>
+    <input matInput formControlName="reference">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" class="submit-btn">Print Receipt</button>
+</form>

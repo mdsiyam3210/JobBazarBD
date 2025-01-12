@@ -1,0 +1,46 @@
+  <div class="parent" id="Sidenav">
+    <mat-sidenav-container class="container" class="{{sideNavColor}}">
+      <!-- <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="sidenav"> -->
+      <mat-sidenav #sidenav mode="side" [opened]="true" [disableClose]="true" class="sidenav" id="sidenav" [(opened)]="opened">
+        <mat-nav-list>
+          <a id="nav1" mat-list-item [routerLink]="[homeLink]"><mat-icon>home</mat-icon><b><u>Home</u></b></a>
+          <hr>
+          <a id="nav2" mat-list-item routerLink="{{profileLink}}"><mat-icon>person</mat-icon> <b><u>{{ profileText }}</u></b></a>
+          <hr>
+          <a id="nav3" mat-list-item routerLink="{{allJobs}}"><mat-icon>description</mat-icon> <b><u>{{ allJobsText }}</u></b></a>
+          <hr>
+          <a id="nav4" mat-list-item routerLink="{{appliedLink}}"><mat-icon>check</mat-icon> <b><u>{{ appliedText }}</u></b></a>
+          <hr>
+          <a id="nav5" mat-list-item routerLink="{{plansLink}}"><mat-icon>attach_money</mat-icon> <b><u>Paid Plans</u></b></a>
+          <hr>
+          @if (employerNotif) {
+            <a id="nav6" mat-list-item routerLink="employer/tips"><mat-icon>notifications</mat-icon> <b><u>Hiring Tips</u></b></a>
+            <hr>
+          }
+          @if (employeeNotif) {
+            <a id="nav6" mat-list-item routerLink="employee/notifications"><mat-icon>notifications</mat-icon> <b><u>Notifications</u></b></a>
+            <hr>
+            <a id="nav7" mat-list-item routerLink="employee/courses"><mat-icon>school</mat-icon>  <b><u>Courses</u></b></a>
+            <hr>
+            <!-- <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> -->
+          }
+          @else {
+            <!-- <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> -->
+          }
+          <a id="navLogOut" mat-list-item (click)="logout()" class="logout" style="position: absolute; bottom: 2%"><mat-icon>exit_to_app</mat-icon> <b><u style="color: rgb(221, 25, 25);">LOGOUT</u></b></a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <!-- <mat-sidenav-content style="background: url(&quot;https://images.pexels.com/photos/7135008/pexels-photo-7135008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1&quot;) 0% 0% / cover no-repeat;"> -->
+        @if (employeeNotif) {}
+        <mat-sidenav-content class="{{ bgImage }}">
+        <!-- <mat-sidenav-content> -->
+      <!-- <mat-sidenav-content style="background: url('../../public/assets/') 0% 0% / cover no-repeat;"> -->
+        <!-- {{ checkPath() }} -->
+        <!-- @if (currentPath != "/login") { -->
+        <div class="red-custom">
+          <!-- <button mat-button (click)="opened = !opened" class="btn" id="btn"><mat-icon style="transform: scale(2);" >menu</mat-icon></button> -->
+        </div>
+        <!-- } -->
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+

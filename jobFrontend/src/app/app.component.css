@@ -1,0 +1,63 @@
+.parent {
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.employeeContentBg {
+  /* background-image: url("../../public/employeeBg.jpg"); */
+  /* background-color: rgb(22, 19, 223); */
+
+  /* background: rgb(5,61,94); */
+  /* background: linear-gradient(90deg, rgba(5,61,94,1) 18%, rgba(15,82,226,1) 34%, rgba(255,183,135,1) 60%, rgba(0,212,255,1) 83%); */
+
+  /* background: rgb(0,212,255);
+  background: linear-gradient(45deg, rgba(0,212,255,1) 14%, rgba(255,183,135,1) 42%, rgba(15,82,226,1) 70%, rgba(5,61,94,1) 89%); */
+
+  /* background: rgb(0,212,255); */
+  /* background: radial-gradient(circle, rgba(0,212,255,1) 14%, rgba(255,183,135,1) 31%, rgba(15,82,226,1) 70%, rgba(5,61,94,1) 89%); */
+
+  /* background: rgb(0,212,255);
+  background: radial-gradient(circle, rgba(0,212,255,1) 11%, rgba(245,179,139,1) 38%, rgba(255,183,135,1) 58%, rgba(15,82,226,1) 76%, rgba(5,61,94,1) 89%); */
+
+  /* background: rgb(0,212,255);
+  background: linear-gradient(220deg, rgba(0,212,255,1) 11%, rgba(255,183,135,1) 48%, rgba(15,82,226,1) 76%, rgba(5,61,94,1) 89%); */
+
+  /* background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%); */
+  background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
+
+  background-blend-mode: multiply,multiply;
+
+
+
+
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.employerContentBg {
+  /* background: rgb(0,212,255);
+  background: linear-gradient(220deg, rgba(0,212,255,1) 11%, rgba(255,183,135,1) 48%, rgba(15,82,226,1) 76%, rgba(5,61,94,1) 89%); */
+
+  /* background-image: linear-gradient( 179deg,  rgba(0,0,0,1) 9.2%, rgba(127,16,16,1) 103.9% ); */
+
+  /* background-image: linear-gradient( 109.6deg,  rgba(102,51,153,1) 11.2%, rgba(2,0,4,1) 91.1% ); */
+
+  background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(0,152,155,1) 0.1%, rgba(0,94,120,1) 94.2% );
+}
+
+.adminContentBg {
+  background-color: rgb(73, 142, 167);
+}

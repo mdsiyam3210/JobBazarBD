@@ -1,0 +1,122 @@
+/*mat-card {
+  margin: 10px;
+  /~ padding: 20px; ~/
+  border-radius: 8px;
+  /~ height: 70vh; ~/
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+mat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+mat-card-header {
+  text-align: center;
+}
+
+.pricing {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.features {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features li {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+mat-card-actions {
+  text-align: center;
+}
+
+/~ .highlight-card {
+  background-color: #f0f8ff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+} ~/
+
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+*/
+
+.titleText {
+  text-align: center;
+  color: black;
+}
+
+#paidPlans {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.responsive-card {
+  flex: 1 1 calc(100% - 40px); /* Default to full width on small screens */
+  max-width: 300px; /* Set a max width for larger cards */
+  margin: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.responsive-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 600px) {
+  .responsive-card {
+    flex: 1 1 calc(50% - 40px); /* Two cards per row on medium screens */
+  }
+}
+
+@media (min-width: 900px) {
+  .responsive-card {
+    flex: 1 1 calc(25% - 40px); /* Four cards per row on larger screens */
+  }
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pricing {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.features {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features li {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+mat-card-header {
+  text-align: center;
+}
+
+mat-card-actions {
+  text-align: center;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  /* background-color: var(--mdc-filled-text-field-container-color, var(--mat-app-surface-variant)); */
+  background-color: black;
+}

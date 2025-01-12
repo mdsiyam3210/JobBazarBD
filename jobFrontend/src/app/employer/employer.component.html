@@ -1,0 +1,204 @@
+<router-outlet></router-outlet>
+
+<div class="parent" id="parent" style="display: none;">
+  <div style="margin: 16px; position: relative; display: flex; justify-content: flex-end; align-items: center; gap: 16px;">
+
+    <!-- Search icon and bar -->
+      <div style="position: relative;">
+        <div class="search-icon" onclick="document.getElementById('searchBar').classList.toggle('expanded'); document.getElementById('filterBar').classList.toggle('invis')">
+          <mat-icon>search</mat-icon>
+        </div>
+        <mat-form-field id="searchBar" class="search-bar">
+          <mat-label>Search jobs</mat-label>
+          <input matInput [(ngModel)]="searchTerm" placeholder="Enter job title or company" (keyup)="applySearch()">
+          <button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <!-- Filter icon and bar -->
+      <div style="position: relative;">
+        <div class="filter-icon" onclick="document.getElementById('filterBar').classList.toggle('expanded')">
+          <mat-icon>filter_list</mat-icon>
+        </div>
+        <mat-form-field id="filterBar" class="filter-bar">
+          <mat-label>Filter by Type</mat-label>
+          <mat-select [(ngModel)]="filterTerm" placeholder="Enter Type" (selectionChange)="applyFilter()">
+            <mat-option value="FULL_TIME">Full Time</mat-option>
+            <mat-option value="PART_TIME">Part Time</mat-option>
+            <mat-option value="CONTRACT">Contract</mat-option>
+            <mat-option value="INTERNSHIP">Internship</mat-option>
+          </mat-select>
+          <button *ngIf="filterTerm" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+  </div>
+  <h1 style="text-align: center; color:black;">Employer Dashboard</h1>
+  @if (user$) {
+    <div class="content">
+      @if (user$) {
+        <h2 style="color:white; text-align:center;">Welcome, {{ user$.name }} To JobBazarBD.com.</h2>
+        <h4 style="color: black; text-align:center;"><i> Companies Posted Jobs </i></h4>
+
+      }
+    </div>
+  }
+
+  <button mat-flat-button class="postBtn" (click)="openDialog(dialogContent)" color="accent"> <mat-icon>library_add</mat-icon>Post A Job</button>
+
+  <ng-template #dialogContent>
+    <div class="dialog-content">
+      <h2 style="color: white;">Post A Job</h2>
+      <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="dialogForm">
+
+        <mat-form-field>
+          <mat-label style="font-size:larger;">JOB TYPE</mat-label>
+          <mat-select formControlName="type">
+            <mat-option value="FULL_TIME">FULL TIME</mat-option>
+            <mat-option value="PART_TIME">PART TIME</mat-option>
+            <mat-option value="INTERNSHIP">INTERNSHIP</mat-option>
+            <mat-option value="CONTRACT">CONTRACTUAL</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Job Title</mat-label>
+          <input matInput formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Salary</mat-label>
+          <input type="number" matInput formControlName="salary">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Location</mat-label>
+          <input matInput formControlName="location">
+        </mat-form-field>
+        <br>
+        <button mat-flat-button class="Btn">Post</button>
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #updateContent>
+    <div class="dialog-content">
+      <h2 style="color: white;">Update A Job</h2>
+      <form [formGroup]="updateForm" (ngSubmit)="onSubmitUpdate()" class="dialogForm">
+
+        <mat-form-field>
+          <mat-label style="font-size:larger;">JOB TYPE</mat-label>
+          <mat-select formControlName="type">
+            <mat-option value="FULL_TIME">FULL TIME</mat-option>
+            <mat-option value="PART_TIME">PART TIME</mat-option>
+            <mat-option value="INTERNSHIP">INTERNSHIP</mat-option>
+            <mat-option value="CONTRACT">CONTRACTUAL</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Job Title</mat-label>
+          <input matInput formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Salary</mat-label>
+          <input type="number" matInput formControlName="salary">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Location</mat-label>
+          <input matInput formControlName="location">
+        </mat-form-field>
+        <br>
+        <button mat-flat-button class="Btn">Post</button>
+      </form>
+    </div>
+  </ng-template>
+
+  <br>
+  <div class="card" id="card">
+    <!-- @for (job of jobs; track $index) { -->
+      <mat-card
+      *ngFor="let job of dataSource.filteredData | slice:((dataSource.paginator?.pageIndex || 0) * (dataSource.paginator?.pageSize || 5)):(((dataSource.paginator?.pageIndex || 0) + 1) * (dataSource.paginator?.pageSize || 5))">
+        <h5 style="text-align: center;"> {{ job["title"] }} </h5>
+        <mat-card-content>
+          <p style="text-align: center;">
+            <b>COMPANY</b> <br>
+            <mat-icon>domain</mat-icon>
+            {{ job["company"] }}
+          </p>
+          <p style="text-align: center;">
+            <b>DESCRIPTION</b> <br>
+            <mat-icon>description</mat-icon>
+            {{ job["description"] }}
+          </p>
+          <p style="text-align: center;">
+            <b>SALARY</b> <br>
+            <mat-icon>attach_money</mat-icon>
+            <b>{{ job["salary"] }}</b> BDT
+          </p>
+          <p style="text-align: center;">
+            <b>LOCATION</b> <br>
+            <mat-icon>location_on</mat-icon>
+            {{ job["location"] }}
+          </p>
+          <p style="text-align: center;">
+            <b>TYPE</b> <br>
+            <mat-icon>info</mat-icon>
+            @if (job["type"] == "FULL_TIME") {
+              FULL TIME
+            }
+            @else if (job["type"] == "PART_TIME") {
+              PART TIME
+            }
+            @else if (job["type"] == "CONTRACT") {
+              CONTRACT
+            }
+            @else if (job["type"] == "INTERNSHIP") {
+              INTERNSHIP
+            }
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button (click)="deleteJob(job['id'])" color="warn" style="margin: 8px;"> DELETE </button>
+          <button mat-flat-button (click)="updateJob(job['id'], updateContent)" color="secondary" style="margin: 8px;" > EDIT </button>
+        </mat-card-actions>
+      </mat-card>
+    <!-- } -->
+  </div>
+
+  <mat-paginator class="employeePaginator"
+    [length]="dataSource.data.length"
+    [pageSize] = "6"
+    aria-label="Select page"
+    style="margin-right: 24px; margin-bottom: 16px;">
+  </mat-paginator>
+
+  <br>
+  <br>
+  <br>
+
+  <h2 style="text-align: center; color: black;">Our Other Clients</h2>
+  <app-clients-carousel></app-clients-carousel>
+
+  <br>
+  <br>
+  <br>
+
+  <app-footer></app-footer>
+
+</div>

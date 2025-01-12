@@ -1,0 +1,18 @@
+.hiring-tips-container {
+  padding: 16px;
+
+  mat-toolbar {
+    margin-bottom: 16px;
+  }
+
+  .tips-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .tip-card {
+    flex: 1 1 calc(33.333% - 16px);
+    min-width: 300px;
+  }
+}

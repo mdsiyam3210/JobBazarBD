@@ -1,0 +1,71 @@
+<h1 class="titleText">{{titleText}}</h1>
+<h2 style="color:'{{textColor}}'; text-align:center;" id="text">Paid Plans</h2>
+<!-- <br> -->
+<!-- <div id="paidPlans">
+  <mat-grid-list cols="4">
+    <mat-grid-tile *ngFor="let plan of plans" [colspan]="1" [rowspan]="1">
+      <mat-card [ngClass]="{'highlight-card': plan.highlight}">
+        <mat-card-header>
+          <mat-card-title>{{ plan.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="pricing">
+            <h2>{{ plan.price | currency:currency }}</h2>
+            <p>Per {{ isYearly ? 'Year' : 'Month' }}</p>
+          </div>
+          <mat-divider></mat-divider>
+          <ul class="features">
+            <li *ngFor="let feature of plan.features">{{ feature }}</li>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="subscribe(plan)">
+            Subscribe
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="toggle-container">
+    <span style="padding: 10px;">Monthly</span>
+    <mat-slide-toggle [(ngModel)]="isYearly" (change)="onPriceToggle()"></mat-slide-toggle>
+    <span style="padding: 10px;">Yearly</span>
+  </div>
+</div> -->
+
+<div id="paidPlans" fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center center">
+  <mat-card
+    *ngFor="let plan of plans"
+    class="responsive-card"
+    [ngClass]="{'highlight-card': plan.highlight}"
+  >
+    <mat-card-header>
+      <mat-card-title>{{ plan.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="pricing">
+        <h2>{{ plan.price }} BDT</h2>
+        <p>Per {{ isYearly ? 'Year' : 'Month' }}</p>
+      </div>
+      <mat-divider></mat-divider>
+      <ul class="features">
+        <li *ngFor="let feature of plan.features">{{ feature }}</li>
+      </ul>
+    </mat-card-content>
+    <br>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" (click)="subscribe(plan)" style="margin: 0 auto;">
+        Pay Now
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<div class="toggle-container">
+  <span style="padding: 10px; font-size: 20px;"> <u> Monthly </u></span>
+  <mat-slide-toggle [(ngModel)]="isYearly" (change)="onPriceToggle()"></mat-slide-toggle>
+  <span style="padding: 10px; font-size: 20px;"><u> Yearly </u></span>
+</div>
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br>
+<app-employee-footer id="footer1"></app-employee-footer>
+<app-footer id="footer2"></app-footer>

@@ -1,0 +1,52 @@
+.titleText {
+  text-align: center;
+  color: black;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-mdc-card {
+  padding: 16px;
+  margin: 16px;
+}
+
+.mat-mdc-card-actions {
+  justify-content: center;
+}
+
+mat-card {
+  margin: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+mat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+mat-card-header {
+  text-align: center;
+}
+
+.deleteBtn {
+  margin: 12px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
+  gap: 16px;
+  margin: 20px;
+  align-items: center;
+  justify-content: center;
+}

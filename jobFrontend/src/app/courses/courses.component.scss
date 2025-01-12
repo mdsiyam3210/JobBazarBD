@@ -1,0 +1,64 @@
+.main-container {
+  height: 100vh;
+}
+
+mat-drawer {
+  width: 250px;
+  background: #0a4c73;
+  color: white;
+
+  .sidebar-title {
+    padding: 16px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  mat-list-item {
+    color: white;
+    font-size: 16px;
+  }
+
+  mat-icon {
+    margin-right: 8px;
+  }
+}
+
+mat-drawer-content {
+  padding: 16px;
+
+  .content-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .courses-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .course-card {
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    mat-card-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    mat-card-subtitle {
+      color: gray;
+    }
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background: #ff4081;
+    color: white;
+  }
+}

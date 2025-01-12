@@ -1,0 +1,108 @@
+<router-outlet></router-outlet>
+<div id="searchFilterContainer" style="margin: 16px; position: relative; display: flex; justify-content: flex-end; align-items: center; gap: 16px;">
+  <!-- Search icon and bar -->
+  <div style="position: relative;">
+    <div class="search-icon" onclick="document.getElementById('searchBar').classList.toggle('expanded'); document.getElementById('filterBar').classList.toggle('invis')">
+      <mat-icon>search</mat-icon>
+    </div>
+    <mat-form-field id="searchBar" class="search-bar">
+      <mat-label>Search jobs</mat-label>
+      <input matInput [(ngModel)]="searchTerm" placeholder="Enter job title or company" (keyup)="applySearch()">
+      <button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <!-- Filter icon and bar -->
+  <div style="position: relative;">
+    <div class="filter-icon" onclick="document.getElementById('filterBar').classList.toggle('expanded')">
+      <mat-icon>filter_list</mat-icon>
+    </div>
+    <mat-form-field id="filterBar" class="filter-bar">
+      <mat-label>Filter by Type</mat-label>
+      <mat-select [(ngModel)]="filterTerm" placeholder="Enter Type" (selectionChange)="applyFilter()">
+        <mat-option value="FULL_TIME">Full Time</mat-option>
+        <mat-option value="PART_TIME">Part Time</mat-option>
+        <mat-option value="CONTRACT">Contract</mat-option>
+        <mat-option value="INTERNSHIP">Internship</mat-option>
+      </mat-select>
+      <button *ngIf="filterTerm" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="parent" style="display: none;" id="parent">
+  <h1 class="titleText">Employee Dashboard</h1>
+  <div class="content">
+    @if (user$) {
+
+      <h2 style="color:rgb(15, 82, 226); text-align:center;">Welcome, {{ user$.name }} to JobBazar.com </h2>
+      <h5 style="color: black; text-align:center;"><i> Apply to your desired job's below.</i></h5>
+    }
+  </div>
+
+  <!-- <div style="margin: 16px;">
+    <mat-form-field class="search-bar">
+      <mat-label>Search jobs</mat-label>
+      <input matInput [(ngModel)]="searchTerm" placeholder="Enter job title or company" (keyup)="applySearch()">
+      <button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div> -->
+
+  <div class="card" id="card">
+    <!-- <mat-card *ngFor="let job of dataSource.filteredData; track: index"> -->
+    <mat-card
+    *ngFor="let job of dataSource.filteredData | slice:((dataSource.paginator?.pageIndex || 0) * (dataSource.paginator?.pageSize || 5)):(((dataSource.paginator?.pageIndex || 0) + 1) * (dataSource.paginator?.pageSize || 5))">
+      <h5 style="text-align: center;"> {{ job["title"] }} </h5>
+      <mat-card-content>
+        <p style="text-align: center;">
+          <b>COMPANY</b> <br>
+          <mat-icon>domain</mat-icon>
+          {{ job["company"] }}
+        </p>
+        <p style="text-align: center;">
+          <b>DESCRIPTION</b> <br>
+          <mat-icon>description</mat-icon>
+          {{ job["description"] }}
+        </p>
+        <p style="text-align: center;">
+          <b>SALARY</b> <br>
+          <mat-icon>attach_money</mat-icon>
+          <b>{{ job["salary"] }}</b> BDT
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button (click)="openDialog(job['id'])" style="margin: 16px">More</button>
+        <button mat-flat-button (click)="applyForJob(job['id'])" color="accent">Apply</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <mat-paginator class="employeePaginator"
+    [length]="dataSource.data.length"
+    [pageSize] = "6"
+    aria-label="Select page"
+    style="margin-right: 24px; margin-bottom: 16px;">
+  </mat-paginator>
+
+  <br>
+  <br>
+  <br>
+
+  <h2 style="text-align: center; color: black;">Featured Companies Actively Hiring</h2>
+  <app-clients-carousel></app-clients-carousel>
+
+  <br>
+  <br>
+  <br>
+
+  <app-employee-footer></app-employee-footer>
+
+</div>
+
+ <!-- <router-outlet></router-outlet>  -->

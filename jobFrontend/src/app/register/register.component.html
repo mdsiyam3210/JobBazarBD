@@ -1,0 +1,48 @@
+<div class="parent">
+  <div class="heading">
+    <div class="mat-typography">
+      <h4 class="jobApplicationHeading"><b> <u> JobBazarBD </u> </b></h4>
+    </div>
+  </div>
+  <br>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="selectionClass">
+      <!-- <mat-label style="color: rgb(0, 13, 201); font-size:larger;"><i>----I AM LOOKING FOR----</i></mat-label> -->
+      <mat-label style="color: #00dddd; font-size:larger;"><i>----I AM LOOKING FOR----</i></mat-label>
+      <mat-select formControlName="role">
+        <mat-option value="USER">A JOB</mat-option>
+        <mat-option value="EMPLOYER">EMPLOYEES/STAFF</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input type="number" matInput formControlName="phone_number">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Username/Email</mat-label>
+      <input matInput formControlName="username">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password">
+    </mat-form-field>
+    <!-- <mat-form-field> -->
+  <div>
+    <button mat-stroked-button (click)="fileInput.click();$event.preventDefault()">Upload Profile Picture</button>
+    <input #fileInput type="file" style="display: none" (change)="onFileSelected($event)" accept="image/*">
+  </div>
+
+  <br>
+
+    <!-- </mat-form-field> -->
+    <div class="mat-typography">
+      <a href="/login" class="loginPageLink">Already have an account?</a>
+    </div>
+    <br>
+    <button mat-flat-button class="loginBtn">Register</button>
+  </form>
+</div>

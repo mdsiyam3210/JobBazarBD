@@ -1,0 +1,120 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-mdc-card {
+  padding: 16px;
+  margin: 16px;
+}
+
+.mat-mdc-card-actions {
+  justify-content: center;
+}
+
+mat-card {
+  margin: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+mat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+mat-card-header {
+  text-align: center;
+}
+
+.postBtn {
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; */
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  text-align: center;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
+  gap: 16px;
+  margin: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Search and Filter Icon */
+.search-icon, .filter-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+}
+
+.search-icon:hover, .filter-icon:hover {
+  background-color: rgba(0,152,155,1);
+}
+
+/* Search and Filter Bars */
+.search-bar, .filter-bar {
+  position: absolute;
+  top: 0;
+  right: 50px; /* Appears to the left of the icons */
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.search-bar.expanded, .filter-bar.expanded {
+  width: 300px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-bar.invis {
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.filter-bar.invis {
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+}

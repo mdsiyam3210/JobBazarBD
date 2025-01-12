@@ -1,0 +1,54 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  // @include mat.sidenav-overrides((
+  //   // container-background-color: rgb(15, 82, 226),
+  //   // container-background-color: rgb(10, 77, 116),
+
+  //   // container-background-color: rgb(5, 61, 94),
+  //   container-background-color: rgb(6, 43, 122)
+  // ));
+
+  @include mat.form-field-overrides((
+    container-color: black,
+  ));
+}
+
+.employeeSidenav {
+  @include mat.sidenav-overrides((
+    // container-background-color: rgb(15, 82, 226),
+    // container-background-color: rgb(10, 77, 116),
+
+    // container-background-color: rgb(5, 61, 94),
+    container-background-color: rgb(6, 43, 122),
+    container-divider-color: rgb(255, 255, 255)
+  ));
+}
+
+.employerSidenav {
+  @include mat.sidenav-overrides((
+    container-background-color: #004658,
+    container-divider-color: rgb(255, 255, 255)
+  ))
+}
+
+.employeePaginator {
+  @include mat.paginator-overrides((
+    container-background-color: transparent,
+    container-text-size: 30px,
+    container-text-color: white,
+  ))
+}
+
+.mat-mdc-paginator-page-size {
+  display: none !important;
+}
+
+.mat-sidenav {
+  border-radius: 0 !important;  // Set border-radius to 0 to remove rounded corners
+}
+
+.red-custom {
+  color: #FF5733;  // Replace with your custom red color (or any other color)
+}

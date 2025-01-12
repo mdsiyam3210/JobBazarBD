@@ -1,0 +1,91 @@
+<div class="parent">
+      <h1 class="titleText" style="text-align: center; color: black;">Employee Dashboard</h1>
+      <div class="content">
+        @if (user$) {
+          <h2 style="color:rgb(15, 82, 226); text-align:center;"> Profile </h2>
+        }
+      </div>
+  @if (user$) {
+    <mat-card class="profile-card">
+      <mat-card-header>
+        <div class="profile-header">
+          <img
+            src="http://localhost:8080/api/uploads/pfp/{{ user$.id }}"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <mat-card-title class="profile-name">
+            {{ user$.name }}
+          </mat-card-title>
+        </div>
+      </mat-card-header>
+      <br>
+      <br>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-icon>phone</mat-icon>
+            <span>Phone - {{ user$.phone }}</span>
+          </mat-list-item>
+          <br>
+          <!-- <br> -->
+          <mat-list-item>
+            <mat-icon mat-list-icon>email</mat-icon> Email -
+            <a mat-button [href]="'mailto:' + user$.email">{{ user$.email }}</a>
+          </mat-list-item>
+          <br>
+          <mat-list-item>
+            <mat-icon mat-list-icon>lock</mat-icon> Password -
+            <span>#$%!$#$</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <br>
+      <br>
+      <mat-card-actions>
+        <!-- <button mat-button [href]="'mailto:' + user$.email">Send Email</button> -->
+        <button mat-flat-button class="postBtn" (click)="editProfile(dialogContent)"> <mat-icon>edit</mat-icon>Edit Profile</button>
+        <!-- <div> -->
+          <button mat-flat-button (click)="fileInput.click();$event.preventDefault()" color="warn" class="postBtn"><mat-icon>picture_in_picture</mat-icon> Change Picture</button>
+          <input #fileInput type="file" style="display: none" (change)="changePicture($event)" accept="image/*">
+        <!-- </div> -->
+      </mat-card-actions>
+    </mat-card>
+  }
+
+  <ng-template #dialogContent>
+    <div class="dialog-content">
+      <h2 style="color: white;">Edit Profile</h2>
+      <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="dialogForm">
+
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input type="text" matInput formControlName="password">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phone">
+        </mat-form-field>
+        <br>
+        <button mat-flat-button class="Btn">Save</button>
+      </form>
+    </div>
+  </ng-template>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <app-employee-footer></app-employee-footer>
+</div>

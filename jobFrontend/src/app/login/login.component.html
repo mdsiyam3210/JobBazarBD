@@ -1,0 +1,28 @@
+<div class="parent">
+  <div class="heading">
+    <div class="mat-typography">
+      <h4 class="jobApplicationHeading"><b> <u> JobBazarBD </u> </b></h4>
+    </div>
+  </div>
+  <br>
+  <br>
+
+
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Username/Email</mat-label>
+      <input matInput formControlName="username">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password">
+    </mat-form-field>
+    <p id="error-msg" style="display: none; color: red"><i><b>Wrong Password Or Email!</b></i></p>
+    <div class="mat-typography">
+      <p style="background-color: black; padding: 4px;"> <a href="/register" class="loginPageLink">Don't have an account?</a> </p>
+    </div>
+    <br>
+    <button mat-flat-button class="loginBtn">Login</button>
+  </form>
+</div>

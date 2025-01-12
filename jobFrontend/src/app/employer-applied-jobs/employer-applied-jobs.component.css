@@ -1,0 +1,123 @@
+.mat-column-id {
+  width: 32px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-actions {
+  text-align: center;
+}
+
+/* .mat-column-id {
+  width: 32px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-actions {
+  text-align: center;
+} */
+
+table, th, td {
+  border: 1px solid white;
+}
+
+.cvTable {
+  max-width: 700px;  /* Reduced container width */
+  margin: 0 auto;
+  padding: 15px;     /* Reduced padding */
+  border-radius: 8px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Reduced space between fields */
+}
+
+mat-form-field {
+  flex: 1 1 45%; /* Reduced the width of each input field */
+  margin-bottom: 10px; /* Smaller margin between fields */
+}
+
+mat-form-field mat-label {
+  font-size: 20px; /* Smaller label font */
+  font-weight: 600;
+}
+
+mat-form-field input {
+  font-size: 16px; /* Smaller input font */
+  height: 30px;    /* Reduced height of input fields */
+}
+
+@media (max-width: 768px) {
+  form {
+    flex-direction: column; /* Stack fields vertically on small screens */
+  }
+
+  mat-form-field {
+    width: 100%; /* Full-width form fields on smaller screens */
+    margin-right: 0;
+  }
+
+  h1 {
+    font-size: 16px; /* Smaller title on mobile */
+  }
+}
+
+/* Custom styling for mat-form-field */
+/* Apply default styling for the form field */
+/* Apply the default styling for the form field */
+.custom-mat-form-field {
+  width: 100%; /* Full width for the form field */
+}
+
+/* Style the readonly input without introducing custom colors */
+.custom-mat-form-field input[readonly] {
+  cursor: not-allowed; /* Show that the field is non-interactive */
+  background-color: inherit; /* Keep the background the same as editable fields */
+  border: inherit; /* Maintain the same border style as editable fields */
+  color: inherit; /* Inherit text color from the surrounding styles */
+}
+
+/* Ensure the label stays with the default styling */
+.custom-mat-form-field input[readonly]:focus + mat-label,
+.custom-mat-form-field input[readonly]:not(:focus) + mat-label {
+  color: inherit; /* Keep the label color as it is */
+}
+
+/* Placeholder text (optional) */
+.custom-mat-form-field input[readonly]::placeholder {
+  opacity: 0.6; /* Slightly fade the placeholder to show it's read-only */
+}
+
+.jobButton {
+  width: 50%;     /* Full-width button */
+  margin-top: 15px; /* Reduced margin above the button */
+  font-size: 13px;  /* Smaller button text */
+  padding: 8px;     /* Smaller button padding */
+  margin: 0 auto !important;
+
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  /* border-radius: 50%; */
+  object-fit: cover;
+  border: 2px solid #ccc;
+  margin-right: 10px;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 500;
+}

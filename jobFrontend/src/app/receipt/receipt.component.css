@@ -1,0 +1,31 @@
+.receipt-card {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.receipt-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-item {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+mat-card-header {
+  background-color: #1976d2;
+  color: white;
+  text-align: center;
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,81 @@
+@use '@angular/material' as mat;
+
+.totalAppsCard {
+  @include mat.card-overrides((
+    container-color: skyblue,
+  ));
+}
+
+.acceptedCard {
+  @include mat.card-overrides((
+    container-color: rgb(21, 82, 21),
+  ));
+}
+
+.rejectedCard {
+  @include mat.card-overrides((
+    container-color: rgb(163, 49, 49),
+  ));
+}
+
+.pendingCard {
+  @include mat.card-overrides((
+    container-color: orange,
+  ));
+}
+
+.totalJobsCard {
+  @include mat.card-overrides((
+    container-color: skyblue,
+  ));
+}
+
+.totalEmployeeCard {
+  @include mat.card-overrides((
+    container-color: rgb(6, 43, 122),
+  ));
+}
+
+.totalEmployerCard {
+  @include mat.card-overrides((
+    container-color: #004658,
+  ));
+}
+
+.count-text {
+  font-size: 4rem; /* Large text for the count */
+  font-weight: bold; /* Bold for emphasis */
+  line-height: 1; /* Adjust line height to avoid unnecessary spacing */
+  display: inline-block; /* Ensures proper alignment with text */
+  vertical-align: middle; /* Aligns the text properly */
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  @include mat.toolbar-overrides((
+    container-background-color: rgb(43, 16, 161),
+    container-text-color: white,
+  ));
+}
+
+.toolbar-title {
+  font-size: 2rem;
+  font-weight: bold;
+  flex-grow: 1;
+  // text-align: center;
+}
+
+.logout-button {
+  font-size: 1rem; /* Standard button size */
+  font-weight: bold;
+}
+
+.text {
+  // color:rgb(15, 82, 226);
+  color: rgb(43, 16, 161);
+  text-align:center;
+  margin: .5em 0 .5em;
+}

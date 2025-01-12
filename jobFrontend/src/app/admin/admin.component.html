@@ -1,0 +1,60 @@
+
+<mat-toolbar color="primary" class="toolbar">
+  <span class="toolbar-title">Admin Dashboard</span>
+  <button mat-flat-button color="warn" class="logout-button" (click)="logout()">Logout</button>
+</mat-toolbar>
+
+<!-- <h1 class="titleText">Admin Dashboard</h1> -->
+<h2 class="text"> <u> JobBazarBD.com </u> </h2>
+
+<div class="card" id="card">
+  <mat-card>
+    <mat-card-header> <h4> APPLICATIONS </h4> </mat-card-header>
+    <mat-card-content>
+
+      <div class="acceptedCard">
+        <mat-card>
+          <mat-card-content><p style="color: white;"> <b> Accepted Applications - </b> <span class="count-text">{{acceptedCount}}</span> </p></mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="rejectedCard">
+        <mat-card>
+          <mat-card-content><p style="color: white;"> <b> Rejected Applications - </b> <span class="count-text">{{rejectedCount}}</span></p></mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header> <h4> JOBS </h4> </mat-card-header>
+    <mat-card-content>
+      <div class="totalJobsCard">
+        <mat-card>
+          <mat-card-content><p style="color: black;"> <b> Total Jobs Posted - </b>  <span class="count-text">{{allJobsCount}} </span> </p></mat-card-content>
+        </mat-card>
+      </div>
+      <div class="totalAppsCard">
+        <mat-card>
+          <mat-card-content><p style="color: black;"> <b> Total Applications - </b> <span class="count-text">{{appsCount}} </span> </p></mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header> <h4> USERS </h4> </mat-card-header>
+    <mat-card-content>
+      <div class="totalEmployeeCard">
+        <mat-card>
+          <mat-card-content><p style="color: white;"> <b> Total Employees - </b> <span class="count-text">{{employeeCount}} </span> </p></mat-card-content>
+        </mat-card>
+      </div>
+      <div class="totalEmployerCard">
+        <mat-card>
+          <mat-card-content><p style="color: white;"> <b> Total Employers - </b> <span class="count-text">{{employerCount}} </span> </p></mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

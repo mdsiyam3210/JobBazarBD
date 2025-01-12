@@ -1,0 +1,213 @@
+<h1 style="text-align: center; color: black;">Employer Dashboard</h1>
+
+@if (user$ && coverletter.length > 0) {
+  <div class="content">
+    <div class="header-profile">
+      <img
+      src="http://localhost:8080/api/uploads/pfp/{{ coverletter[0].user_id }}"
+      alt="Profile Picture"
+      class="profile-pic"
+      />
+
+      <h2 style="color:white; text-align:center;">CV Of {{coverletter[0].name}} </h2>
+
+    </div>
+  </div>
+}
+@else {
+  <div class="content">
+      <h2 style="color:white; text-align:center;">Job Applications</h2>
+  </div>
+}
+
+<div id="jobTable">
+  <table *ngIf="tableData.length > 0" mat-table [dataSource]="tableData" class="mat-elevation-z8 jobTable">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element["id"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let element"> {{element["title"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <td mat-cell *matCellDef="let element"> {{element["type"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element"> <button mat-button (click)="applicationInfo(element['id'])"> View Applications </button> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<div id="appTable">
+
+  <table *ngIf="applicationTableData.length > 0" mat-table [dataSource]="applicationTableData" class="mat-elevation-z8 jobTable">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element["id"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Applicant </th>
+      <td mat-cell *matCellDef="let element"> {{element["name"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element["status"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button (click)="jobInfo()"> View Jobs </button>
+        <button mat-flat-button style="margin: 16px;" (click)="cvInfo(element['applicant_id'])"> View CV </button>
+        <a mat-flat-button href="http://localhost:8080/api/uploads/pdf/{{ element['applicant_id'] }}" target="_blank"> Download CV </a>
+        <button mat-stroked-button (click)="jobDecision(element['id'], 'ACCEPTED')" style="margin: 8px;" color="primary"> ACCEPT </button>
+        <button mat-stroked-button (click)="jobDecision(element['id'], 'REJECTED')" color="warn"> REJECT </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="applicationDisplayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: applicationDisplayedColumns;"></tr>
+  </table>
+</div>
+
+<div id="cvTable" class="cvTable">
+<!--
+  <table *ngIf="coverletter.length > 0" mat-table [dataSource]="coverletter" class="mat-elevation-z8 jobTable">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element["id"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element["name"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element["email"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone_number">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element["phone_number"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef> Location </th>
+      <td mat-cell *matCellDef="let element"> {{element["location"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="institute">
+      <th mat-header-cell *matHeaderCellDef> Institute </th>
+      <td mat-cell *matCellDef="let element"> {{element["institute"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="degree">
+      <th mat-header-cell *matHeaderCellDef> Degree </th>
+      <td mat-cell *matCellDef="let element"> {{element["degree"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="passing_year">
+      <th mat-header-cell *matHeaderCellDef> Passing Year </th>
+      <td mat-cell *matCellDef="let element"> {{element["passing_year"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="experience">
+      <th mat-header-cell *matHeaderCellDef> Experience </th>
+      <td mat-cell *matCellDef="let element"> {{element["experience"]}} Years </td>
+    </ng-container>
+
+    <ng-container matColumnDef="skills">
+      <th mat-header-cell *matHeaderCellDef> Skills </th>
+      <td mat-cell *matCellDef="let element"> {{element["skills"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cgpa">
+      <th mat-header-cell *matHeaderCellDef> CGPA </th>
+      <td mat-cell *matCellDef="let element"> {{element["cgpa"]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button (click)="jobInfo()"> View Jobs </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="cvDisplayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: cvDisplayedColumns;"></tr>
+  </table> -->
+
+  <!-- *ngIf="coverletter.length > 0" -->
+
+  <form [formGroup]="form" *ngIf="coverletter.length > 0">
+
+    <mat-form-field appearance="fill" class="custom-mat-form-field">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" readonly="true" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-mat-form-field">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="phone_number" type="number" readonly="true"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-mat-form-field">
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location" readonly="true" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-mat-form-field">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" readonly="true"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-mat-form-field">
+      <mat-label>Skills</mat-label>
+      <input matInput formControlName="skills" readonly="true"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-mat-form-field">
+      <mat-label>Years Of Experience</mat-label>
+      <input matInput formControlName="experience" type="number" readonly="true"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-mat-form-field">
+      <mat-label>Institute</mat-label>
+      <input matInput formControlName="institute" readonly="true"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-mat-form-field">
+      <mat-label>Degree</mat-label>
+      <input matInput formControlName="degree" type="text" readonly="true"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-mat-form-field">
+      <mat-label>Passing Year</mat-label>
+      <input matInput formControlName="passing_year" type="number" readonly="true"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-mat-form-field">
+      <mat-label>CGPA</mat-label>
+      <input matInput formControlName="cgpa" readonly="true"/>
+    </mat-form-field>
+    <button mat-flat-button (click)="jobInfo()" class="jobButton"> Go Back </button>
+  </form>
+
+</div>
+
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+<app-footer></app-footer>

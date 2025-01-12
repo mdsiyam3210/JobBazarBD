@@ -1,0 +1,91 @@
+/* Custom styling for mat-form-field */
+/* Apply default styling for the form field */
+/* Apply the default styling for the form field */
+
+/* Style the readonly input without introducing custom colors */
+.custom-mat-form-field input[readonly] {
+  cursor: not-allowed; /* Show that the field is non-interactive */
+  background-color: inherit; /* Keep the background the same as editable fields */
+  border: inherit; /* Maintain the same border style as editable fields */
+  color: inherit; /* Inherit text color from the surrounding styles */
+}
+
+/* Ensure the label stays with the default styling */
+.custom-mat-form-field input[readonly]:focus + mat-label,
+.custom-mat-form-field input[readonly]:not(:focus) + mat-label {
+  color: inherit; /* Keep the label color as it is */
+}
+
+/* Placeholder text (optional) */
+.custom-mat-form-field input[readonly]::placeholder {
+  opacity: 0.6; /* Slightly fade the placeholder to show it's read-only */
+}
+
+/* General page styling */
+
+
+.header {
+  text-align: center;
+  color: #00796b;
+  font-family: Arial, sans-serif;
+  padding-top: 20px;
+}
+
+.title {
+  color: rgb(15, 82, 226);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.receipt-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #191c1c;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.payment-method-label {
+  font-size: 14px;
+  color: white;
+}
+
+.payment-methods {
+  margin-bottom: 10px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #00796b;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.submit-btn:hover {
+  background-color: #004d40;
+}
+
+/* Styling for mat-form-field labels */
+.mat-label {
+  font-weight: bold;
+  color: white;
+}
+
+.mat-form-field .mat-input-element {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.mat-checkbox-label {
+  font-size: 14px;
+  color: white;
+}
